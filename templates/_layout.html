@@ -6,8 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ siteName }}</title>
     <link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:300,500" rel="stylesheet" async="true">
 </head>
 <body>
+
+    <nav id="appNavigation" class="navigation">
+        <a href="#" class="navigation__link hide-on-tablet hide-on-desktop"><object data="assets/menu-icon.svg" type="image/svg+xml" class="navigation__icon"></object></a>
+        <a href="#" class="navigation__link navigation__link--logo"><img src="assets/logo.png" alt="Voltage Arc Logo (minimalistic version)" class="navigation__logo"></a>
+        <a href="#" class="navigation__link navigation__link--right-aligned"><object data="assets/search-icon.svg" type="image/svg+xml" class="navigation__icon"></object></a>
+    
+        <div class="navlist">
+            <a href="/videos" class="navlist__link">Videos</a>
+            <a href="/music" class="navlist__link">Music</a>
+            <a href="/gallery" class="navlist__link">Gallery</a>
+            <a href="/shows" class="navlist__link">Shows</a>
+            <a href="/news" class="navlist__link">News</a>
+        </div>
+    </nav>
+
     {% block content %}
         <p>If you see me, you haven’t set your <code>{% verbatim %}{% block content %}…{% endblock %}{% endverbatim %}</code> yet.</p>
         <p>See Twig’s <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">Template Inheritance</a> documentation for an explanation.</p>

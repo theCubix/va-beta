@@ -1,17 +1,29 @@
 //declare variables
+//everything window
 var scrollPosition = 0
 var screenWidth = 0
+
+//nav general
 var nav = document.getElementById('appNavigation')
 var bgImage = document.getElementById('appLandingPageBackgroundImage')
 var navList = document.getElementById('appNavList')
+var navSearchForm = document.getElementById('appNavSearch')
+
+//nav menu
 var navMenu = document.getElementById('appNavMenuButton')
 var navMenuClose = document.getElementById('appNavMenuCloseButton')
 var showLinksI = 0
 var navListLinks = navList.querySelectorAll('li')
 
+//nav search
+var navSearch = document.getElementById('appNavSearchButton')
+var navSearchClose = document.getElementById('appNavSearchCloseButton')
+
+//navlist control
 navMenu.addEventListener('click', showNavList)
 navMenuClose.addEventListener('click', hideNavList)
 
+//show the navlist
 function showNavList() {
   document.getElementsByTagName('body')[0].classList.add('lock-scroll')
   nav.classList.add('navigation--elapsed')
@@ -21,6 +33,7 @@ function showNavList() {
   setTimeout(showLinks(), 500)
 }
 
+//automated and delayed animation
 function showLinks() {
   setTimeout(function () {
     var link = navListLinks[showLinksI]
@@ -32,6 +45,7 @@ function showLinks() {
   }, 100)
 }
 
+//hide navlist
 function hideNavList() {
   nav.classList.remove('navigation--elapsed')
   navList.classList.remove('navlist--elapsed')
@@ -45,17 +59,40 @@ function hideNavList() {
   showLinksI = 0
 }
 
-//maybe for later useful
-window.addEventListener('resize', autoHideNavList)
+//search control
+navSearch.addEventListener('click', showSearch)
+navSearchClose.addEventListener('click', hideSearch)
 
-function autoHideNavList() {
-  screenWidth = window.innerWidth || document.documentElement.clientWidth || document.documentElement.getElementsByTagName('body')[0]
-  if (screenWidth >= 768 && navList.classList.contains('navlist--elapsed') ) {
-    navList.classList.remove('navlist--elapsed')
-  }
+//show the search
+function showSearch() {
+  document.getElementsByTagName('body')[0].classList.add('lock-scroll')
+  nav.classList.add('navigation--elapsed')
+  navSearch.classList.remove('navigation__link--visible')
+  navMenu.classList.remove('navigation__link--visible')
+  navSearchClose.classList.add('navigation__link--visible')
+  setTimeout(function(){navSearchForm.classList.add('navsearch--elapsed')}, 500)
 }
 
-//fire 'scroll' function on scroll
+//hide the search
+function hideSearch() {
+  document.getElementsByTagName('body')[0].classList.remove('lock-scroll')
+  navSearchForm.classList.remove('navsearch--elapsed')
+  nav.classList.remove('navigation--elapsed')
+  navSearch.classList.add('navigation__link--visible')
+  navMenu.classList.add('navigation__link--visible')
+  navSearchClose.classList.remove('navigation__link--visible')
+}
+
+//window.addEventListener('resize', autoHideNavList)
+
+//function autoHideNavList() {
+//  screenWidth = window.innerWidth || document.documentElement.clientWidth || document.documentElement.getElementsByTagName('body')[0]
+//  if (screenWidth >= 768 && navList.classList.contains('navlist--elapsed') ) {
+//    navList.classList.remove('navlist--elapsed')
+//  }
+//}
+
+//automatically add background to nav on scroll
 window.addEventListener('scroll', scroll)
 
 //create 'scroll' function

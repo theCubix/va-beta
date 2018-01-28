@@ -28,8 +28,9 @@ function showNavList() {
   document.getElementsByTagName('body')[0].classList.add('lock-scroll')
   nav.classList.add('navigation--elapsed')
   navList.classList.add('navlist--elapsed')
-  navMenu.classList.remove('navigation__link--visible')
   navMenuClose.classList.add('navigation__link--visible')
+  navMenu.classList.remove('navigation__link--visible')
+  navSearch.classList.remove('navigation__link--visible')
   setTimeout(showLinks(), 500)
 }
 
@@ -49,8 +50,9 @@ function showLinks() {
 function hideNavList() {
   nav.classList.remove('navigation--elapsed')
   navList.classList.remove('navlist--elapsed')
-  navMenu.classList.add('navigation__link--visible')
   navMenuClose.classList.remove('navigation__link--visible')
+  navMenu.classList.add('navigation__link--visible')
+  navSearch.classList.add('navigation__link--visible')
   for (let index = 0; index < navListLinks.length; index++) {
     const link = navListLinks[index];
     link.classList.remove('navlist__item--visible')
